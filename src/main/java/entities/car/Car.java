@@ -1,8 +1,10 @@
-package car;
+package entities.car;
 
-import owner.Owner;
+import entities.address.Address;
+import entities.owner.Owner;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Car {
@@ -10,6 +12,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 20)
+    @Basic(fetch = FetchType.EAGER)
     private String brand;
     @Column(length = 20)
     private String model;
@@ -33,27 +36,40 @@ public class Car {
     private int millage;
     @Column(length = 7)
     private int price;
-    @Column(length = 100)
-    private String state;
-    @Column(length = 50)
-    private String town;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    })
-    private Owner owner;
     @Column(length = 17)
     private String vin;
-
+    @ManyToOne(
+            cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH
+            })
+    private Owner owner;
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH
+            })
+    private Address address;
+    private byte[] imageData;
+    private LocalDate datePublish;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 8)
+    private StatusCar statusCar;
+    @Column(length = 1000)
+    private String description;
 
     public Car() {
     }
 
     public Car(String brand, String model, TypeBody typeBody, GearBox gearBox,
                TypeEngine typeEngine, Drive drive, float volumeEngine, int yearOfRelease,
-               int millage, int price, String state, String town, String vin) {
+               int millage, int price, String vin, byte[] imageData, LocalDate datePublish,
+               StatusCar statusCar, String description) {
         this.brand = brand;
         this.model = model;
         this.typeBody = typeBody;
@@ -64,9 +80,11 @@ public class Car {
         this.yearOfRelease = yearOfRelease;
         this.millage = millage;
         this.price = price;
-        this.state = state;
-        this.town = town;
         this.vin = vin;
+        this.imageData = imageData;
+        this.datePublish = datePublish;
+        this.statusCar = statusCar;
+        this.description = description;
     }
 
     public int getId() {
@@ -171,5 +189,73 @@ public class Car {
 
     public void setVin(String vin) {
         this.vin = vin;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    public LocalDate getDatePublish() {
+        return datePublish;
+    }
+
+    public void setDatePublish(LocalDate datePublish) {
+        this.datePublish = datePublish;
+    }
+
+    public void setStatusCar(StatusCar statusCar) {
+        this.statusCar = statusCar;
+    }
+
+    public StatusCar getStatusCar() {
+        return statusCar;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int hashCode() {
+        return model.hashCode()
+                + brand.hashCode()
+                + typeBody.hashCode()
+                + gearBox.hashCode()
+                + typeEngine.hashCode()
+                + drive.hashCode()
+                + (int) volumeEngine * 10
+                + yearOfRelease
+                + address.getState().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Car objCar = (Car) obj;
+        if (!vin.equals(objCar.getVin())) {
+            return false;
+        }
+        return true;
     }
 }

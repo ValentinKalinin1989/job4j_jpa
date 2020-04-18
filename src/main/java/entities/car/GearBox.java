@@ -1,4 +1,4 @@
-package car;
+package entities.car;
 
 public enum GearBox {
     MT,

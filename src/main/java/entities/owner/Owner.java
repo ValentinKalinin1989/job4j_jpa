@@ -1,6 +1,6 @@
-package owner;
+package entities.owner;
 
-import car.Car;
+import entities.car.Car;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -78,8 +78,28 @@ public class Owner {
 
     public void setCar(Car car) {
         if (this.carList == null) {
-            carList = new ArrayList<Car>();
+            carList = new ArrayList<>();
         }
         carList.add(car);
+    }
+
+    @Override
+    public int hashCode() {
+        return fullName.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Owner objOwner = (Owner) obj;
+        if (!passport.equals(objOwner.getPassport())) {
+            return false;
+        }
+        return true;
     }
 }

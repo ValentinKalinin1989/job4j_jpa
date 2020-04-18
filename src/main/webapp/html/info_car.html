@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Информация об автомобиле</title>
+    <!-- CSS styles -->
+    <link rel="stylesheet" type="text/css" href="css/tableStyle.css">
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery,  Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th> Общий вид автомобиля </th>
+            <th> Технические характеристики</th>
+        </tr>        
+        </thead>
+        <tr>
+            <td>
+                <form>
+                    <table>
+                      <tr>
+                         <td> <img src="catratele.jpg" width="400" height="400"/></td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <label for="upload_button" class="label">Изменить фото</label>
+                              <input type="file" name="imageData" id="upload_button" style="visibility: hidden">
+                          </td>
+                      </tr>
+                    </table>
+                </form>
+            <td>
+                <form>
+                    <table>
+                        <tr>
+                            <td>Марка</td>
+                            <td><input type="text" name="brand"></td>
+                        </tr>
+                        <tr>
+                            <td>Модель</td>
+                            <td><input type="text" name="model"></td>
+                        </tr>
+                        <tr>
+                            <td>Тип кузова</td>
+                            <td>
+                                <label>
+                                    <select name="typeBody">
+                                        <option value="SEDAN">СЕДАН</option>
+                                        <option value="HATCHBACK">ХЕТБЭК</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="COUPE">КУПЕ</option>
+                                        <option value="CONVERTIBLE">КАБРИОЛЕТ</option>
+                                        <option value="WAGON">УНИВЕРСАЛ</option>
+                                        <option value="VAN">МИНИВЕН</option>
+                                        <option value="JEEP">ДЖИП</option>
+                                        <option value="PICK_UP">ПИКАП</option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Тип коробки передач</td>
+                            <td>
+                                <label>
+                                    <select name="gearBox">
+                                        <option value="MT">MT</option>
+                                        <option value="AT">AT</option>
+                                        <option value="CVT">CVT</option>
+                                        <option value="DSG">DSG</option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Тип двигателя</td>
+                            <td>
+                                <label>
+                                    <select name="typeEngine">
+                                        <option value="GASOLINE">БЕНЗИН</option>
+                                        <option value="DIESEL">ДИЗЕЛЬ</option>
+                                        <option value="GAS">ГАЗ</option>
+                                        <option value="ELECTRIC">ЭЛЕКТРО</option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Привод</td>
+                            <td>
+                                <label>
+                                    <select name="drive">
+                                        <option value="FRONT">ПЕРЕДНИЙ</option>
+                                        <option value="REAR">ЗАДНИЙ</option>
+                                        <option value="FULL">ПОЛНЫЙ</option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Объем двигателя</td>
+                            <td><input type="text" name="volumeEngine"></td>
+                        </tr>
+                        <tr>
+                            <td>Год выпуска</td>
+                            <td><input type="text" name="yearOfRelease"></td>
+                        </tr>
+                        <tr>
+                            <td>Пробег</td>
+                            <td><input type="text" name="millage"></td>
+                        </tr>
+                        <tr>
+                            <td>Цена</td>
+                            <td><input type="text" name="price"></td>
+                        </tr>
+                        <tr>
+                            <td>Vin</td>
+                            <td><input type="text" name="vin"></td>
+                        </tr>
+                        <tr>
+                            <td>Область</td>
+                            <td><input type="text" name="state" content="UTF-8" ></td>
+                        </tr>
+                        <tr>
+                            <td>Город</td>
+                            <td><input type="text" name="town" content="UTF-8"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" name="" value="Сохранить изменения">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+
+</body>
+
+</html>
