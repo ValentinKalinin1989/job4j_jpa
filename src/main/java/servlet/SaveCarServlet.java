@@ -40,7 +40,6 @@ public class SaveCarServlet extends HttpServlet {
         List<FileItem> items;
         Map<String, String> mapItems = new HashMap<>(10);
         byte[] imageData = null;
-
         //получение даных из request
         try {
             request.setCharacterEncoding("UTF-8");
@@ -57,7 +56,7 @@ public class SaveCarServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String state = mapItems.get("state"); //request.getParameter("state");
+        String state = mapItems.get("state"); 
         String town = mapItems.get("town");
 
         EntityManager manager = Persistence.createEntityManagerFactory("car").createEntityManager();
@@ -76,8 +75,8 @@ public class SaveCarServlet extends HttpServlet {
                 mapItems.get("vin"),
                 imageData,
                 LocalDate.now(),
-                null,
-                null
+                StatusCar.SALES,
+                mapItems.get("description")
         );
         Address addressFirst = new Address(state, town);
         newCar.setAddress(addressFirst);
@@ -85,7 +84,7 @@ public class SaveCarServlet extends HttpServlet {
         manager.getTransaction().commit();
         manager.close();
 
-        request.getRequestDispatcher("WEB-INF/index.html");
+        request.getRequestDispatcher("WEB-INF/create.html");
     }
 }
 

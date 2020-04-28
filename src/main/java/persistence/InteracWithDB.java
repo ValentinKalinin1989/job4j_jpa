@@ -37,7 +37,7 @@ public class InteracWithDB {
 
             stringBuilder.append("\"typeBody\":");
             stringBuilder.append("\"");
-            stringBuilder.append(carList.get(i).getTypeBody());
+            stringBuilder.append(carList.get(i).getTypeBody().getRuName());
             stringBuilder.append("\",");
 
             stringBuilder.append("\"gearBox\":");
@@ -47,7 +47,7 @@ public class InteracWithDB {
 
             stringBuilder.append("\"typeEngine\":");
             stringBuilder.append("\"");
-            stringBuilder.append(carList.get(i).getTypeEngine());
+            stringBuilder.append(carList.get(i).getTypeEngine().getRuName());
             stringBuilder.append("\",");
 
             stringBuilder.append("\"drive\":");
@@ -86,12 +86,15 @@ public class InteracWithDB {
             stringBuilder.append(carList.get(i).getAddress().getTown());
             stringBuilder.append("\",");
 
-
             stringBuilder.append("\"imageData\":");
             stringBuilder.append("\"");
             stringBuilder.append(Base64.getEncoder().encodeToString(carList.get(i).getImageData()));
-            stringBuilder.append("\"");
+            stringBuilder.append("\",");
 
+            stringBuilder.append("\"description\":");
+            stringBuilder.append("\"");
+            stringBuilder.append(carList.get(i).getDescription());
+            stringBuilder.append("\"");
 
             stringBuilder.append("}");
 
