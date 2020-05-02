@@ -1,5 +1,6 @@
 package entities.owner;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import entities.car.Car;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Owner {
     @Column(length = 20)
     private String password;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Car> carList;
 
     public Owner() {

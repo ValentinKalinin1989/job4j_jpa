@@ -1,5 +1,6 @@
 package entities.car;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import entities.address.Address;
 import entities.owner.Owner;
 
@@ -39,12 +40,14 @@ public class Car {
     @Column(length = 17)
     private String vin;
     @ManyToOne(
+            fetch = FetchType.EAGER,
             cascade = {
                     CascadeType.DETACH,
                     CascadeType.MERGE,
                     CascadeType.PERSIST,
                     CascadeType.REFRESH
             })
+    @JsonManagedReference
     private Owner owner;
     @ManyToOne(
             fetch = FetchType.EAGER,
@@ -54,6 +57,7 @@ public class Car {
                     CascadeType.PERSIST,
                     CascadeType.REFRESH
             })
+    @JsonManagedReference
     private Address address;
     private byte[] imageData;
     private LocalDate datePublish;

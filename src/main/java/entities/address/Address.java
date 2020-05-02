@@ -1,5 +1,6 @@
 package entities.address;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import entities.car.Car;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Address {
                     CascadeType.PERSIST,
                     CascadeType.REFRESH
             })
+    @JsonBackReference
     private List<Car> carList;
 
     public Address() {

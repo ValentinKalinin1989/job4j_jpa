@@ -84,7 +84,7 @@ public class SaveCarServlet extends HttpServlet {
         manager.getTransaction().commit();
         manager.close();
 
-        request.getRequestDispatcher("WEB-INF/create.html");
+        request.getRequestDispatcher("index.html").forward(request, response);
     }
 }
 
