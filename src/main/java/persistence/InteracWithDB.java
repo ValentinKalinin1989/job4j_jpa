@@ -10,6 +10,7 @@ import java.util.List;
 
 public class InteracWithDB {
     private EntityManager manager;
+
     public InteracWithDB() {
         manager = Persistence.createEntityManagerFactory("car").createEntityManager();
     }
@@ -18,5 +19,18 @@ public class InteracWithDB {
         manager.getTransaction().begin();
         List<Car> carList = manager.createQuery("select c from Car c").getResultList();
         return new ObjectMapper().writeValueAsString(carList);
+    }
+
+    public List<String> getAllUniqStates() {
+        manager.getTransaction().begin();
+        List<String> stateList = manager.createQuery("select distinct a.state from Address a").getResultList();
+        return stateList;
+    }
+
+    public List<String> getAllUniqTowns(String state) {
+        manager.getTransaction().begin();
+        List<String> stateTowns = manager.createQuery("select distinct a.town from Address a where a.state = ?1")
+                .setParameter(1, state).getResultList();
+        return stateTowns;
     }
 }

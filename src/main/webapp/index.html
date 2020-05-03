@@ -51,135 +51,149 @@
                 + 'Год выпуска: ' + data[car].yearOfRelease
                 + '</td><td>'
                 + 'Пробег: ' + data[car].millage + ' км'
-                + '</td><td><textarea rows="10" cols="100" readonly>'
+                + '</td><td><textarea rows="7" readonly>'
                 + data[car].description
                 + '</textarea></td></tr>';
         }
         $("#car_list").append(table_body);
     }
 </script>
-<div class="container">
-    <table class="table-bordered">
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        <label>
-                            Марка:
-                            <select name="brand">
-                            </select>
-                        </label>
-                    </td>
-                    <td>
-                        <label>
-                            Модель:
-                            <select name="model">
-                            </select>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Кузов:
-                            <select name="typeBody">
-                                <option value="SEDAN">СЕДАН</option>
-                                <option value="HATCHBACK">ХЕТБЭК</option>
-                                <option value="SUV">SUV</option>
-                                <option value="COUPE">КУПЕ</option>
-                                <option value="CONVERTIBLE">КАБРИОЛЕТ</option>
-                                <option value="WAGON">УНИВЕРСАЛ</option>
-                                <option value="VAN">МИНИВЕН</option>
-                                <option value="JEEP">ДЖИП</option>
-                                <option value="PICK_UP">ПИКАП</option>
-                            </select>
-                        </label>
-                    </td>
-                    <td>
-                        <label>
-                            КПП:
-                            <select name="gearBox">
-                                <option value="MT">MT</option>
-                                <option value="AT">AT</option>
-                                <option value="CVT">CVT</option>
-                                <option value="DSG">DSG</option>
-                            </select>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Год от <input type="text" size="4">
-                    </td>
-                    <td>
-                        до <input type="text" size="4">
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        <label>
-                            Тип ДВС:
-                            <select name="typeEngine">
-                                <option value="GASOLINE">БЕНЗИН</option>
-                                <option value="DIESEL">ДИЗЕЛЬ</option>
-                                <option value="GAS">ГАЗ</option>
-                                <option value="ELECTRIC">ЭЛЕКТРО</option>
-                            </select>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Привод:
-                            <select name="drive">
-                                <option value="FRONT">ПЕРЕДНИЙ</option>
-                                <option value="REAR">ЗАДНИЙ</option>
-                                <option value="FULL">ПОЛНЫЙ</option>
-                            </select>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Вввод пробега
-                        </label>
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        Объем ДВС от: <input type="text" size="3"/>  л.с.  до: <input type="text" size="3"> л.с.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Цена от: <input type="text"/> руб.  до: <input type="text"> руб.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="button" value="Найти">
-                    </td>
-                </tr>
-            </table>
-        </td>
+<div class="container" style="margin: auto">
+    <table>
+        <tr>
+            <td>
+                <div class="container" style="margin: auto">
+                    <table class="table-bordered">
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Марка:
+                                            <select name="brand">
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            Модель:
+                                            <select name="model">
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Кузов:
+                                            <select name="typeBody">
+                                                <option value="SEDAN">СЕДАН</option>
+                                                <option value="HATCHBACK">ХЕТБЭК</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="COUPE">КУПЕ</option>
+                                                <option value="CONVERTIBLE">КАБРИОЛЕТ</option>
+                                                <option value="WAGON">УНИВЕРСАЛ</option>
+                                                <option value="VAN">МИНИВЕН</option>
+                                                <option value="JEEP">ДЖИП</option>
+                                                <option value="PICK_UP">ПИКАП</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            КПП:
+                                            <select name="gearBox">
+                                                <option value="MT">MT</option>
+                                                <option value="AT">AT</option>
+                                                <option value="CVT">CVT</option>
+                                                <option value="DSG">DSG</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Год от <input type="text" size="4">
+                                    </td>
+                                    <td>
+                                        до <input type="text" size="4">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Тип ДВС:
+                                            <select name="typeEngine">
+                                                <option value="GASOLINE">БЕНЗИН</option>
+                                                <option value="DIESEL">ДИЗЕЛЬ</option>
+                                                <option value="GAS">ГАЗ</option>
+                                                <option value="ELECTRIC">ЭЛЕКТРО</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Привод:
+                                            <select name="drive">
+                                                <option value="FRONT">ПЕРЕДНИЙ</option>
+                                                <option value="REAR">ЗАДНИЙ</option>
+                                                <option value="FULL">ПОЛНЫЙ</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Вввод пробега
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Объем ДВС от: <input type="text" size="3"/> л.с. до: <input type="text"
+                                                                                                    size="3"> л.с.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Цена от: <input type="text"/> руб. до: <input type="text"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <input type="button" value="Найти">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="container">
+                    <table class="table-bordered" style="margin: auto">
+                        <tbody id="car_list">
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
     </table>
 </div>
-<div class="container">
-    <table class="table-bordered" style="margin: auto">
-        <tbody id="car_list">
-        </tbody>
-    </table>
-</div>
+
 
 </body>
 </html>
