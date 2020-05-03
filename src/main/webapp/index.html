@@ -25,11 +25,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
-    $(function getCars() {
-        $.ajax('./cars').done(function (data) {
-            populateTable(data);
-        })
-    })
+    $(
+        $.ajax('./cars').done(
+            function (data) {
+                populateTable(data);
+            }
+        )
+    )
 </script>
 <script>
     function populateTable(data) {
@@ -55,8 +57,38 @@
                 + data[car].description
                 + '</textarea></td></tr>';
         }
-        $("#car_list").append(table_body);
+        $("#car_list").html(table_body);
     }
+</script>
+<script>
+    $(
+        function populateStateSelect() {
+            $.ajax('./states').done(
+                function (data) {
+                    var selected_body = '';
+                    for (state in data) {
+                        selected_body += '<option value="' + data[state] + '">' + data[state] + '</option>';
+                    }
+                    $("#state").html(selected_body);
+                }
+            )
+        }
+    )
+</script>
+<script>
+    $(
+        function populateStateSelect() {
+            $.ajax('./brands').done(
+                function (data) {
+                    var selected_body = '';
+                    for (brand in data) {
+                        selected_body += '<option value="' + data[brand] + '">' + data[brand] + '</option>';
+                    }
+                    $("#brand").html(selected_body);
+                }
+            )
+        }
+    )
 </script>
 <div class="container" style="margin: auto">
     <table>
@@ -70,14 +102,14 @@
                                     <td>
                                         <label>
                                             Марка:
-                                            <select name="brand">
+                                            <select name="brand" id="brand">
                                             </select>
                                         </label>
                                     </td>
                                     <td>
                                         <label>
                                             Модель:
-                                            <select name="model">
+                                            <select name="model" id="model">
                                             </select>
                                         </label>
                                     </td>
@@ -86,7 +118,7 @@
                                     <td>
                                         <label>
                                             Кузов:
-                                            <select name="typeBody">
+                                            <select name="typeBody" id="typeBody">
                                                 <option value="SEDAN">СЕДАН</option>
                                                 <option value="HATCHBACK">ХЕТБЭК</option>
                                                 <option value="SUV">SUV</option>
@@ -102,7 +134,7 @@
                                     <td>
                                         <label>
                                             КПП:
-                                            <select name="gearBox">
+                                            <select name="gearBox" id="gearBox">
                                                 <option value="MT">MT</option>
                                                 <option value="AT">AT</option>
                                                 <option value="CVT">CVT</option>
@@ -113,10 +145,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Год от <input type="text" size="4">
+                                        Год от <input type="text" size="4" id="startYear">
                                     </td>
                                     <td>
-                                        до <input type="text" size="4">
+                                        до <input type="text" size="4" id="endYear">
                                     </td>
                                 </tr>
                             </table>
@@ -127,7 +159,7 @@
                                     <td>
                                         <label>
                                             Тип ДВС:
-                                            <select name="typeEngine">
+                                            <select name="typeEngine" id="typeEngine">
                                                 <option value="GASOLINE">БЕНЗИН</option>
                                                 <option value="DIESEL">ДИЗЕЛЬ</option>
                                                 <option value="GAS">ГАЗ</option>
@@ -140,7 +172,7 @@
                                     <td>
                                         <label>
                                             Привод:
-                                            <select name="drive">
+                                            <select name="drive" id="drive">
                                                 <option value="FRONT">ПЕРЕДНИЙ</option>
                                                 <option value="REAR">ЗАДНИЙ</option>
                                                 <option value="FULL">ПОЛНЫЙ</option>
@@ -161,17 +193,28 @@
                             <table>
                                 <tr>
                                     <td>
-                                        Объем ДВС от: <input type="text" size="3"/> л.с. до: <input type="text"
-                                                                                                    size="3"> л.с.
+                                        Объем ДВС от: <input type="text" size="3" id="startVolDVS"/>
+                                        л.с. до: <input type="text"  size="3" id="endVolDVS"> л.с.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Цена от: <input type="text"/> руб. до: <input type="text"> руб.
+                                        Цена от: <input type="text" id="startPrice"/>
+                                        руб. до: <input type="text" id="endPrice"> руб.
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
+                                    <td>
+                                        <label>
+                                            Регион:
+                                            <select name="state" id="state">
+                                            </select>
+                                        </label>
+                                        <label>
+                                            Город:
+                                            <select name="town" id="town">
+                                            </select>
+                                        </label>
                                         <input type="button" value="Найти">
                                     </td>
                                 </tr>
@@ -193,6 +236,32 @@
         </tr>
     </table>
 </div>
+<script>
+    $("#state").change(function () {
+        $.get('./towns', {state: $('#state').val()}).done(
+            function (data) {
+                var selected_body = '';
+                for (town in data) {
+                    selected_body += '<option value="' + data[town] + '">' + data[town] + '</option>';
+                }
+                $("#town").html(selected_body);
+            }
+        )
+    })
+</script>
+<script>
+    $("#brand").change(function () {
+        $.get('./models', {brand: $('#brand').val()}).done(
+            function (data) {
+                var selected_body = '';
+                for (model in data) {
+                    selected_body += '<option value="' + data[model] + '">' + data[model] + '</option>';
+                }
+                $("#model").html(selected_body);
+            }
+        )
+    })
+</script>
 
 
 </body>

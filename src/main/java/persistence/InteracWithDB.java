@@ -33,4 +33,18 @@ public class InteracWithDB {
                 .setParameter(1, state).getResultList();
         return stateTowns;
     }
+
+    public List<String> getAllUniqBrands() {
+        manager.getTransaction().begin();
+        List<String> stateBrands = manager.createQuery("select distinct c.brand from Car c").getResultList();
+        return stateBrands;
+    }
+
+    public List<String> getAllUniqModels(String brand) {
+        manager.getTransaction().begin();
+        List<String> stateBrands = manager.createQuery("select distinct c.model from Car c where c.brand = ?1")
+                .setParameter(1, brand).getResultList();
+        return stateBrands;
+    }
+
 }
